@@ -4,7 +4,9 @@
 
 A student concept for Google Maps: a puzzle game that turns the wait at red lights into something worth waiting for. Over one journey, the driver builds a single picture, a few jigsaw pieces at each red light, and sees it complete on arrival.
 
-**▶ Play the prototype:** https://claude.ai/artifact/JAtZqm4uUJFrcWaeXnGFJJ
+**▶ Play the prototype:** https://raw.githack.com/nysharana/puzzle-trail/main/play.html
+
+Or download [`play.html`](play.html) and open it in any browser. The whole prototype is in that one file.
 
 ![The prototype running on a car dashboard at a red light](docs/demo-in-car.jpg)
 
@@ -53,4 +55,4 @@ React, TypeScript and Tailwind CSS, bundled with Vite into one HTML file.
 | `src/components/` | The map, navigation bar, puzzle panel, pictures, arrival screen and demo controls |
 | `src/useAutoDemo.ts` | The hands-free demo |
 
-The build is one self-contained file (`dist/index.html`), so it can be opened directly in a browser or hosted anywhere.
+The build is one self-contained file (`dist/index.html`). A copy of it is kept at the top of the repo as `play.html`.
