@@ -1,0 +1,46 @@
+/* Layout: presenter page with a 1280x720 in-car display, demo controls underneath. */
+:root {
+  --page: #F1F3F4; --panel: #FFFFFF; --ink: #202124; --mute: #5F6368; --line: #DADCE0; --chip: #F1F3F4;
+  --accent: #1A73E8; --accent-ink: #1A73E8; --on-accent: #FFFFFF;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #1B1C1E; --panel: #26282B; --ink: #E8EAED; --mute: #9AA0A6; --line: #3C4043; --chip: #303134;
+    --accent: #8AB4F8; --accent-ink: #8AB4F8; --on-accent: #202124; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #1B1C1E; --panel: #26282B; --ink: #E8EAED; --mute: #9AA0A6; --line: #3C4043; --chip: #303134;
+  --accent: #8AB4F8; --accent-ink: #8AB4F8; --on-accent: #202124; color-scheme: dark;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { background: var(--page); color: var(--ink); }
+
+.piece-btn:focus-visible .piece-edge { stroke: #FBBC05; stroke-width: 8; }
+.piece-btn:hover .piece-edge { stroke: #D2E3FC; }
+
+@keyframes panelIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes pieceOk { 0% { transform: scale(1); } 40% { transform: scale(1.06); } 100% { transform: scale(1); } }
+@keyframes shine { from { transform: translateX(0); } to { transform: translateX(1300px); } }
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cardIn { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes pinPop { 0%, 70% { transform: translateY(0); } 85% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
+
+.panel-in { animation: panelIn 260ms cubic-bezier(.2,.7,.2,1); }
+.piece-ok { animation: pieceOk 420ms ease-out; }
+.seal { animation: fadeIn 500ms 800ms ease-out both; }
+.shine { animation: shine 1.4s 700ms ease-in-out both; }
+.path-draw { stroke-dasharray: 1; stroke-dashoffset: 0; animation: draw 1.6s 300ms ease-in-out backwards; }
+.fade-in { animation: fadeIn 300ms ease-out; }
+.card-in { animation: cardIn 420ms cubic-bezier(.2,.7,.2,1); }
+.pin-pop > * { animation: pinPop 2s ease-out 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-in, .piece-ok, .shine, .seal, .fade-in, .card-in, .pin-pop > * { animation: none; }
+}
